@@ -23,8 +23,8 @@ var cache int
 func init() {
 	flag.Usage()
 	flag.StringVar(&baseAddress, "host", "-1", "用于指定端口")
-	flag.IntVar(&start, "start", 21, "用于指定开始范围，默认为21")
-	flag.IntVar(&end, "end", 200, "用于指定端口结束范围，默认为200")
+	flag.IntVar(&start, "start", 1, "用于指定开始范围，默认为1")
+	flag.IntVar(&end, "end", 500, "用于指定端口结束范围，默认为500")
 	flag.IntVar(&cache, "cache", 100, "用于指定发送速率，默认为100")
 }
 
