@@ -6,10 +6,16 @@ A simple tcp port scanner
 ## 使用方式
 
 - 克隆本仓库
-  
-  - > git clone <https://github.com/YiGuan-z/port-scanner.git>
-  - > cd tcp-scanner
-  - > make
+
+  1. ```shell
+      git clone <https://github.com/YiGuan-z/port-scanner.git>
+      ``` 
+  2. ```shell
+      cd port-scanner
+      ```
+  3. ```shell
+      make
+      ```
 
 - 参数说明
   - -host：指定主机名
