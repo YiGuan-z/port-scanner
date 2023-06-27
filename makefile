@@ -1,8 +1,7 @@
-.DEFAULT :build
 directory = build
 files= mac-arm mac-amd windows-arm windows-amd linux-arm linux-amd
 
-build: create-dirs build-mac-arm build-mac-amd build-linux-arm build-linux-amd build-windows-arm build-windows-amd
+build:all: create-dirs build-mac-arm build-mac-amd build-linux-arm build-linux-amd build-windows-arm build-windows-amd
 	@echo "success"
 build-mac-amd:
 	export $(call env,darwin,amd64) && go build -o $(directory)/mac-amd/port-scanner
@@ -16,6 +15,7 @@ build-linux-amd:
 	export $(call env,linux,amd64) && go build -o $(directory)/linux-amd/port-scanner
 build-linux-arm:
 	export $(call env,linux,arm64) && go build -o $(directory)/linux-arm/port-scanner
+
 create-dirs:
 	@if [ -d $(directory) ]; then \
 		echo "Directory exists"; \

@@ -53,15 +53,23 @@ func main() {
 	elspased := time.Since(startTime) / 1e9
 	fmt.Printf("\n\n%d seconds🫡", elspased)
 }
+
 func worker(ports chan int, wg *sync.WaitGroup) {
+	buffer := make([]byte, 2048)
 	for p := range ports {
 		address := fmt.Sprintf("%s:%d", baseAddress, p)
 		conn, err := net.Dial("tcp", address)
 		if err != nil {
 			fmt.Printf("%d 端口已关闭🤡\n", p)
 		} else {
+			_, _ = conn.Write([]byte("ss"))
+			_, err := conn.Read(buffer)
 			_ = conn.Close()
-			fmt.Printf("%d 端口已开启😁\n", p)
+			if err != nil {
+				fmt.Printf("%d 端口已关闭🤡\n", p)
+			} else {
+				fmt.Printf("%d 端口已开启😁\n", p)
+			}
 		}
 		wg.Done()
 	}
