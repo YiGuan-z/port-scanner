@@ -12,6 +12,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: check out
+      uses: actions/checkout@v3.5.3
+      
     - name: Set go Env
       uses: actions/setup-go@v4.0.1
       with: 
