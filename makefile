@@ -1,7 +1,7 @@
 directory = build
 files= mac-arm mac-amd windows-arm windows-amd linux-arm linux-amd
 
-build:all: create-dirs build-mac-arm build-mac-amd build-linux-arm build-linux-amd build-windows-arm build-windows-amd
+build: create-dirs build-mac-arm build-mac-amd build-linux-arm build-linux-amd build-windows-arm build-windows-amd
 	@echo "success"
 build-mac-amd:
 	export $(call env,darwin,amd64) && go build -o $(directory)/mac-amd/port-scanner
