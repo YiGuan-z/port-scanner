@@ -12,24 +12,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: check out
-      uses: actions/checkout@v3.5.3
-      
-    - name: Set go Env
-      uses: actions/setup-go@v4.0.1
-      with: 
-        go-version: 1.20.5
-        cache: true
-        architecture: x64
-        
-    - name: Build
-      run: make
-      
-    - name: Upload a Build
-      uses: actions/upload-artifact@v3.1.2
-      with: 
-        path: build
-        name: port-scanner
+      - name: check out
+        uses: actions/checkout@v3.5.3
+
+      - name: Set go Env
+        uses: actions/setup-go@v4.0.1
+        with:
+          go-version: 1.20.5
+          cache: false
+          architecture: x64
+
+      - name: Build
+        run: make
+
+      - name: Upload a Build
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          path: build
+          name: port-scanner
         
     
 

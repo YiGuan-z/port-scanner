@@ -8,20 +8,18 @@ import (
 	"time"
 )
 
-/*扫描地址*/
-var baseAddress string
-
-/*开始范围*/
-var start int
-
-/*结束范围*/
-var end int
-
-/*缓冲*/
-var cache int
+var (
+	/*扫描地址*/
+	baseAddress string
+	/*开始范围*/
+	start int
+	/*结束范围*/
+	end int
+	/*缓冲*/
+	cache int
+)
 
 func init() {
-	flag.Usage()
 	flag.StringVar(&baseAddress, "host", "-1", "用于指定端口")
 	flag.IntVar(&start, "start", 1, "用于指定开始范围，默认为1")
 	flag.IntVar(&end, "end", 500, "用于指定端口结束范围，默认为500")
