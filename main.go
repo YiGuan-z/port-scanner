@@ -54,22 +54,17 @@ func main() {
 	fmt.Printf("\n\n%d seconds🫡", elspased)
 }
 
+// worker todo 需要一个扫描端口的逻辑
 func worker(ports chan int, wg *sync.WaitGroup) {
-	buffer := make([]byte, 2048)
 	for p := range ports {
 		address := fmt.Sprintf("%s:%d", baseAddress, p)
 		conn, err := net.Dial("tcp", address)
+
 		if err != nil {
 			fmt.Printf("%d 端口已关闭🤡\n", p)
 		} else {
-			_, _ = conn.Write([]byte("ss"))
-			_, err := conn.Read(buffer)
+			fmt.Printf("%d 端口已开启😁\n", p)
 			_ = conn.Close()
-			if err != nil {
-				fmt.Printf("%d 端口已关闭🤡\n", p)
-			} else {
-				fmt.Printf("%d 端口已开启😁\n", p)
-			}
 		}
 		wg.Done()
 	}
